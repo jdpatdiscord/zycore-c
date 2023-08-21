@@ -245,7 +245,8 @@ ZyanStatus ZyanVectorDestroy(ZyanVector* vector)
 
     if (vector->destructor)
     {
-        for (ZyanUSize i = 0; i < vector->size; ++i)
+        ZyanUSize i = 0;
+        for (; i < vector->size; ++i)
         {
             vector->destructor(ZYCORE_VECTOR_OFFSET(vector, i));
         }
@@ -583,7 +584,8 @@ ZyanStatus ZyanVectorDeleteRange(ZyanVector* vector, ZyanUSize index, ZyanUSize 
 
     if (vector->destructor)
     {
-        for (ZyanUSize i = index; i < index + count; ++i)
+        ZyanUSize i = index;
+        for (; i < index + count; ++i)
         {
             vector->destructor(ZYCORE_VECTOR_OFFSET(vector, i));
         }
@@ -671,7 +673,8 @@ ZyanStatus ZyanVectorFindEx(const ZyanVector* vector, const void* element, ZyanI
     ZYAN_ASSERT(vector->element_size);
     ZYAN_ASSERT(vector->data);
 
-    for (ZyanUSize i = index; i < index + count; ++i)
+    ZyanUSize i = index;
+    for (; i < index + count; ++i)
     {
         if (comparison(ZYCORE_VECTOR_OFFSET(vector, i), element))
         {
@@ -762,7 +765,8 @@ ZyanStatus ZyanVectorResizeEx(ZyanVector* vector, ZyanUSize size, const void* in
 
     if (vector->destructor && (size < vector->size))
     {
-        for (ZyanUSize i = size; i < vector->size; ++i)
+        ZyanUSize i = size;
+        for (; i < vector->size; ++i)
         {
             vector->destructor(ZYCORE_VECTOR_OFFSET(vector, i));
         }
@@ -777,7 +781,8 @@ ZyanStatus ZyanVectorResizeEx(ZyanVector* vector, ZyanUSize size, const void* in
 
     if (initializer && (size > vector->size))
     {
-        for (ZyanUSize i = vector->size; i < size; ++i)
+        ZyanUSize i = vector->size;
+        for (; i < size; ++i)
         {
             ZYAN_MEMCPY(ZYCORE_VECTOR_OFFSET(vector, i), initializer, vector->element_size);
         }

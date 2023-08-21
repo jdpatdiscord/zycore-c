@@ -960,7 +960,8 @@ ZyanStatus ZyanStringToLowerCaseEx(ZyanString* string, ZyanUSize index, ZyanUSiz
     }
 
     char* s = (char*)string->vector.data + index;
-    for (ZyanUSize i = index; i < index + count; ++i)
+    ZyanUSize i = index;
+    for (; i < index + count; ++i)
     {
         const char c = *s;
         if ((c >= 'A') && (c <= 'Z'))
@@ -1001,7 +1002,8 @@ ZyanStatus ZyanStringToUpperCaseEx(ZyanString* string, ZyanUSize index, ZyanUSiz
     }
 
     char* s = (char*)string->vector.data + index;
-    for (ZyanUSize i = index; i < index + count; ++i)
+    ZyanUSize i = index;
+    for (; i < index + count; ++i)
     {
         const char c = *s;
         if ((c >= 'a') && (c <= 'z'))

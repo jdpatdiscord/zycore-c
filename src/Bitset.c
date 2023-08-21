@@ -89,7 +89,8 @@ static ZyanStatus ZyanBitsetInitVectorElements(ZyanVector* vector, ZyanUSize cou
     ZYAN_ASSERT(vector);
 
     static const ZyanU8 zero = 0;
-    for (ZyanUSize i = 0; i < count; ++i)
+    ZyanUSize i = 0;
+    for (; i < count; ++i)
     {
         ZYAN_CHECK(ZyanVectorPushBack(vector, &zero));
     }
@@ -207,7 +208,8 @@ ZyanStatus ZyanBitsetPerformByteOperation(ZyanBitset* destination, const ZyanBit
     ZYAN_CHECK(ZyanVectorGetSize(&source->bits, &s2));
 
     const ZyanUSize min = ZYAN_MIN(s1, s2);
-    for (ZyanUSize i = 0; i < min; ++i)
+    ZyanUSize i = 0;
+    for (; i < min; ++i)
     {
         ZyanU8* v1;
         const ZyanU8* v2;
@@ -247,7 +249,8 @@ ZyanStatus ZyanBitsetFlip(ZyanBitset* bitset)
 
     ZyanUSize size;
     ZYAN_CHECK(ZyanVectorGetSize(&bitset->bits, &size));
-    for (ZyanUSize i = 0; i < size; ++i)
+    ZyanUSize i = 0;
+    for (; i < size; ++i)
     {
         ZyanU8* value;
         ZYAN_CHECK(ZyanVectorGetPointerMutable(&bitset->bits, i, (void**)&value));
@@ -371,7 +374,8 @@ ZyanStatus ZyanBitsetSetAll(ZyanBitset* bitset)
 
     ZyanUSize size;
     ZYAN_CHECK(ZyanVectorGetSize(&bitset->bits, &size));
-    for (ZyanUSize i = 0; i < size; ++i)
+    ZyanUSize i = 0;
+    for (; i < size; ++i)
     {
         ZyanU8* value;
         ZYAN_CHECK(ZyanVectorGetPointerMutable(&bitset->bits, i, (void**)&value));
@@ -390,7 +394,8 @@ ZyanStatus ZyanBitsetResetAll(ZyanBitset* bitset)
 
     ZyanUSize size;
     ZYAN_CHECK(ZyanVectorGetSize(&bitset->bits, &size));
-    for (ZyanUSize i = 0; i < size; ++i)
+    ZyanUSize i = 0;
+    for (; i < size; ++i)
     {
         ZyanU8* value;
         ZYAN_CHECK(ZyanVectorGetPointerMutable(&bitset->bits, i, (void**)&value));
@@ -517,7 +522,8 @@ ZyanStatus ZyanBitsetCount(const ZyanBitset* bitset, ZyanUSize* count)
 
     ZyanUSize size;
     ZYAN_CHECK(ZyanVectorGetSize(&bitset->bits, &size));
-    for (ZyanUSize i = 0; i < size; ++i)
+    ZyanUSize i = 0;
+    for (; i < size; ++i)
     {
         ZyanU8* value;
         ZYAN_CHECK(ZyanVectorGetPointer(&bitset->bits, i, (const void**)&value));
@@ -544,7 +550,8 @@ ZyanStatus ZyanBitsetAll(const ZyanBitset* bitset)
 
     ZyanUSize size;
     ZYAN_CHECK(ZyanVectorGetSize(&bitset->bits, &size));
-    for (ZyanUSize i = 0; i < size; ++i)
+    ZyanUSize i = 0;
+    for (; i < size; ++i)
     {
         ZyanU8* value;
         ZYAN_CHECK(ZyanVectorGetPointer(&bitset->bits, i, (const void**)&value));
@@ -576,7 +583,8 @@ ZyanStatus ZyanBitsetAny(const ZyanBitset* bitset)
 
     ZyanUSize size;
     ZYAN_CHECK(ZyanVectorGetSize(&bitset->bits, &size));
-    for (ZyanUSize i = 0; i < size; ++i)
+    ZyanUSize i = 0;
+    for (; i < size; ++i)
     {
         ZyanU8* value;
         ZYAN_CHECK(ZyanVectorGetPointer(&bitset->bits, i, (const void**)&value));
@@ -608,7 +616,8 @@ ZyanStatus ZyanBitsetNone(const ZyanBitset* bitset)
 
     ZyanUSize size;
     ZYAN_CHECK(ZyanVectorGetSize(&bitset->bits, &size));
-    for (ZyanUSize i = 0; i < size; ++i)
+    ZyanUSize i = 0;
+    for (; i < size; ++i)
     {
         ZyanU8* value;
         ZYAN_CHECK(ZyanVectorGetPointer(&bitset->bits, i, (const void**)&value));

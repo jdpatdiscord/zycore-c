@@ -602,7 +602,8 @@ ZyanStatus ZyanListResizeEx(ZyanList* list, ZyanUSize size, const void* initiali
     if (size > list->size)
     {
         ZyanListNode* node;
-        for (ZyanUSize i = list->size; i < size; ++i)
+        ZyanUSize i = list->size;
+        for (; i < size; ++i)
         {
             ZYAN_CHECK(ZyanListAllocateNode(list, &node));
             node->prev = list->tail;
@@ -628,7 +629,8 @@ ZyanStatus ZyanListResizeEx(ZyanList* list, ZyanUSize size, const void* initiali
         }
     } else
     {
-        for (ZyanUSize i = size; i < list->size; ++i)
+        ZyanUSize i = size;
+        for (; i < list->size; ++i)
         {
             ZyanListNode* const node = list->tail;
 

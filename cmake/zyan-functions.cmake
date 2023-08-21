@@ -9,7 +9,7 @@ function (zyan_set_common_flags target)
         target_compile_options("${target}" PUBLIC "/wd4201")
     else ()
         # For the more civilized compilers, we go with C11.
-        set_target_properties("${target}" PROPERTIES C_STANDARD 11)
+        set_target_properties("${target}" PROPERTIES C_STANDARD 90)
     endif ()
 
     if (ZYAN_DEV_MODE)
